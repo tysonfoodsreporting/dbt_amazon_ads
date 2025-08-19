@@ -1,4 +1,11 @@
-{{ config(enabled=fivetran_utils.enabled_vars(['ad_reporting__amazon_ads_enabled','amazon_ads__portfolio_history_enabled'])) }}
+{{ config(enabled=fivetran_utils.enabled_vars(['ad_reporting__amazon_ads_enabled','amazon_ads__portfolio_history_enabled']),
+    unique_key = ['source_relation','portfolio_id','account_id','profile_id','date_day'],
+    partition_by={
+      "field": "date_day",
+      "data_type": "date",
+      "granularity": "day"
+    }
+) }}
 
 with report as (
     select *

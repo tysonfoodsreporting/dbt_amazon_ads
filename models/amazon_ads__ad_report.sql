@@ -1,4 +1,11 @@
-{{ config(enabled=var('ad_reporting__amazon_ads_enabled', True)) }}
+{{ config(enabled=var('ad_reporting__amazon_ads_enabled', True),
+    unique_key = ['source_relation','campaign_id','account_id','profile_id','date_day'],
+    partition_by={
+      "field": "date_day",
+      "data_type": "date",
+      "granularity": "day"
+    }
+) }}
 
 with report as (
     select *
