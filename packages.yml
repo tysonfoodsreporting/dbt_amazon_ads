@@ -1,3 +1,6 @@
 packages:
-  - git: https://github.com/tysonfoodsreporting/dbt_amazon_ads_source.git   
-    revision: "production"
+
+  - package: fivetran/fivetran_utils
+    version: [">=0.4.0", "<0.5.0"]
+  # - git: https://github.com/tysonfoodsreporting/dbt_amazon_ads_source.git   
+  #   revision: "production"
