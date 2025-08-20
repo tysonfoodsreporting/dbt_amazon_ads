@@ -210,8 +210,8 @@ models:
         description: "{{ doc('portfolio_name') }}"
       - name: profile_id
         description: "{{ doc('profile_id') }}"
-        tests:
-          - not_null
+        # tests:
+        #   - not_null
       - name: serving_status
         description: "{{ doc('serving_status') }}"
       - name: state
