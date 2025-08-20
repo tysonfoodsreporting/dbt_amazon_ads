@@ -7,15 +7,20 @@ models:
     +schema: amazon_ads_summary_prod
     +materialized: table
 
-    # intermediate:
-    #   +materialized: view
-    # staging:
-    #   +schema: amazon_ads_source
-    #   +materialized: table
-    #   tmp:
-    #     +materialized: view
+    intermediate:
+      +schema: amazon_ads_stg_prod
+      +materialized: view
+
+    staging:
+      +schema: amazon_ads_stg_prod
+      +materialized: table
+      tmp:
+        +materialized: view
 
 vars:
+
+  amazon_ads_schema: "mother_ny_tf_amazon_ads_raw_prod"
+
   amazon_ads:    
     ad_group_history: "{{ source('amazon_ads', 'ad_group_history') }}"
     ad_group_level_report: "{{ source('amazon_ads', 'ad_group_level_report') }}"
